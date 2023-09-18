@@ -5,8 +5,13 @@ class Snake {
   }
 
   draw() {
-    for (let i = 0; i < this.segments.length; i++) {
-      this.segments[i].drawSquare('green')
+    for (let i = 1; i < this.segments.length; i++) {
+      this.segments[0].drawSquare('green')
+      if (i % 2 != 0) {
+        this.segments[i].drawSquare('aqua')
+      } else {
+        this.segments[i].drawSquare('orangered')
+      }
     }
   }
 
