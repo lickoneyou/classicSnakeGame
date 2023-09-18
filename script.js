@@ -33,3 +33,12 @@ const intervalId = setInterval(() => {
   // apple.draw()
   drawBorder()
 }, 100)
+
+const gameOver = () => {
+  clearInterval(intervalId)
+  ctx.font = '60px Courier'
+  ctx.fillStyle = 'black'
+  ctx.textAlign = 'center'
+  ctx.textBaseline = 'middle'
+  ctx.fillText('Конец игры', width / 2, height / 2)
+}
