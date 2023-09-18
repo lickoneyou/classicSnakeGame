@@ -45,6 +45,7 @@ class Snake {
 
     if (newHead.equal(apple.position)) {
       score++
+      animationSpeed--
       apple.move()
     } else {
       this.segments.pop()

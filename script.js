@@ -25,15 +25,6 @@ const drawScore = () => {
   ctx.fillText(`Счет: ${score}`, blockSize, blockSize)
 }
 
-const gameOver = () => {
-  clearInterval(intervalId)
-  ctx.font = '60px Courier'
-  ctx.fillStyle = 'black'
-  ctx.textAlign = 'center'
-  ctx.textBaseline = 'middle'
-  ctx.fillText('Конец игры', width / 2, height / 2)
-}
-
 const snake = new Snake()
 const apple = new Apple()
 
@@ -51,11 +42,26 @@ $('body').keydown(function (event) {
   }
 })
 
-const intervalId = setInterval(() => {
+let animationSpeed = 100
+
+let gameLoop = () => {
   ctx.clearRect(0, 0, width, height)
   drawScore()
   snake.move()
   snake.draw()
   apple.draw()
   drawBorder()
-}, 100)
+
+  setTimeout(gameLoop, animationSpeed)
+}
+
+gameLoop()
+
+const gameOver = () => {
+  gameLoop = null
+  ctx.font = '60px Courier'
+  ctx.fillStyle = 'black'
+  ctx.textAlign = 'center'
+  ctx.textBaseline = 'middle'
+  ctx.fillText('Конец игры', width / 2, height / 2)
+}
