@@ -7,7 +7,7 @@ const blockSize = 10
 const widthInBlocks = width / blockSize
 const heigthInBlocks = height / blockSize
 
-const score = 0
+let score = 0
 
 const drawBorder = () => {
   ctx.fillStyle = 'grey'
@@ -24,6 +24,18 @@ const drawScore = () => {
   ctx.textBaseline = 'top'
   ctx.fillText(`Счет: ${score}`, blockSize, blockSize)
 }
+
+const gameOver = () => {
+  clearInterval(intervalId)
+  ctx.font = '60px Courier'
+  ctx.fillStyle = 'black'
+  ctx.textAlign = 'center'
+  ctx.textBaseline = 'middle'
+  ctx.fillText('Конец игры', width / 2, height / 2)
+}
+
+const snake = new Snake()
+const apple = new Apple()
 
 const direction = {
   37: 'left',
@@ -47,12 +59,3 @@ const intervalId = setInterval(() => {
   apple.draw()
   drawBorder()
 }, 100)
-
-const gameOver = () => {
-  clearInterval(intervalId)
-  ctx.font = '60px Courier'
-  ctx.fillStyle = 'black'
-  ctx.textAlign = 'center'
-  ctx.textBaseline = 'middle'
-  ctx.fillText('Конец игры', width / 2, height / 2)
-}

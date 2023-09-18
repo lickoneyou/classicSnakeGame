@@ -4,7 +4,7 @@ class Apple {
   }
 
   draw() {
-    this.position.drawCircle('green')
+    this.position.drawCircle('red')
   }
 
   move() {

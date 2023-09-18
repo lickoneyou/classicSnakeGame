@@ -5,8 +5,8 @@ class Block {
   }
 
   drawSquare(color) {
-    const x = this.col + blockSize
-    const y = this.row + blockSize
+    const x = this.col * blockSize
+    const y = this.row * blockSize
     ctx.fillStyle = color
     ctx.fillRect(x, y, blockSize, blockSize)
   }
@@ -28,7 +28,7 @@ class Block {
     this.circle(centerX, centerY, blockSize / 2, true)
   }
 
-  equal(otherBlock) {
-    return this.col === otherBlock.col && this.row === otherBlock.row
+  equal(block) {
+    return this.col == block.col && this.row == block.row
   }
 }

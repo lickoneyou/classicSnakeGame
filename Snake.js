@@ -6,27 +6,8 @@ class Snake {
 
   draw() {
     for (let i = 0; i < this.segments.length; i++) {
-      this.segments[i].drawSquare('blue')
+      this.segments[i].drawSquare('green')
     }
-  }
-
-  checkCollision(head) {
-    const leftCollision = head.col === 0
-    const topCollision = head.row === 0
-    const rightCollision = head.col === widthInBlocks - 1
-    const buttonCollision = head.row === heigthInBlocks - 1
-
-    const wallCollision =
-      leftCollision || topCollision || rightCollision || buttonCollision
-
-    const selfCollision = false
-
-    for (let i = 0; i < this.segments.length; i++) {
-      if (head.equal(this.segments[i])) {
-        selfCollision = true
-      }
-    }
-    return wallCollision || selfCollision
   }
 
   move() {
@@ -57,12 +38,31 @@ class Snake {
 
     this.segments.unshift(newHead)
 
-    if (newHead.equal(apple.pocition)) {
+    if (newHead.equal(apple.position)) {
       score++
       apple.move()
     } else {
       this.segments.pop()
     }
+  }
+
+  checkCollision(head) {
+    const leftCollision = head.col === 0
+    const topCollision = head.row === 0
+    const rightCollision = head.col === widthInBlocks - 1
+    const buttonCollision = head.row === heigthInBlocks - 1
+
+    const wallCollision =
+      leftCollision || topCollision || rightCollision || buttonCollision
+
+    let selfCollision = false
+
+    for (let i = 0; i < this.segments.length; i++) {
+      if (head.equal(this.segments[i])) {
+        selfCollision = true
+      }
+    }
+    return wallCollision || selfCollision
   }
 
   setDirection(newDirection) {
