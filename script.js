@@ -17,9 +17,17 @@ const drawBorder = () => {
   ctx.fillRect(width - blockSize, 0, blockSize, height)
 }
 
+const drawScore = () => {
+  ctx.font = '20px Courier'
+  ctx.fillStyle = 'black'
+  ctx.textAlign = 'left'
+  ctx.textBaseline = 'top'
+  ctx.fillText(`Счет: ${score}`, blockSize, blockSize)
+}
+
 const intervalId = setInterval(() => {
   ctx.clearRect(0, 0, width, height)
-  // drawScore()
+  drawScore()
   // snake.move()
   // snake.draw()
   // apple.draw()
