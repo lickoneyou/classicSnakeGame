@@ -25,8 +25,6 @@ const drawScore = () => {
   ctx.fillText(`Счет: ${score}`, blockSize, blockSize)
 }
 
-const block = new Block(4, 3)
-
 const direction = {
   37: 'left',
   38: 'up',
@@ -44,11 +42,10 @@ $('body').keydown(function (event) {
 const intervalId = setInterval(() => {
   ctx.clearRect(0, 0, width, height)
   drawScore()
-  // snake.move()
-  // snake.draw()
-  // apple.draw()
+  snake.move()
+  snake.draw()
+  apple.draw()
   drawBorder()
-  block.drawCircle('red')
 }, 100)
 
 const gameOver = () => {
