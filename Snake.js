@@ -64,4 +64,17 @@ class Snake {
       this.segments.pop()
     }
   }
+
+  setDirection(newDirection) {
+    if (this.direction === 'up' && newDirection === 'down') {
+      return
+    } else if (this.direction === 'right' && newDirection === 'left') {
+      return
+    } else if (this.direction === 'down' && newDirection === 'up') {
+      return
+    } else if (this.direction === 'left' && newDirection === 'right') {
+      return
+    }
+    this.nextDirection = newDirection
+  }
 }

@@ -25,8 +25,21 @@ const drawScore = () => {
   ctx.fillText(`Счет: ${score}`, blockSize, blockSize)
 }
 
-const block = new Block(4,3)
+const block = new Block(4, 3)
 
+const direction = {
+  37: 'left',
+  38: 'up',
+  39: 'right',
+  40: 'down',
+}
+
+$('body').keydown(function (event) {
+  const newDirection = direction[event.keyCode]
+  if (newDirection) {
+    snake.setDirection(newDirection)
+  }
+})
 
 const intervalId = setInterval(() => {
   ctx.clearRect(0, 0, width, height)
